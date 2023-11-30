@@ -1,0 +1,22 @@
+{
+    "scripts": {
+        "start": "node $NODE_OPTIONS node_modules/node-red/red.js $FLOWS"
+    },
+    "name": "itemaq_angle",
+    "description": "sistema de angulamiento para la empresa itemaq",
+    "version": "0.0.1",
+    "dependencies": {
+        "node-red-contrib-flatter": "1.1.1",
+        "node-red-contrib-nmea": "0.0.4",
+        "node-red-node-mysql": "1.0.3",
+        "node-red-node-ping": "0.3.1",
+        "node-red-node-serialport": "1.0.1",
+        "node-red-contrib-usb-watch": "1.0.9"
+    },
+    "node-red": {
+        "settings": {
+            "flowFile": "flows.json",
+            "credentialsFile": "flows_cred.json"
+        }
+    }
+}
