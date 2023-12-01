@@ -24,10 +24,18 @@
         "env": []
     },
     {
+        "id": "93c938d261dc36e3",
+        "type": "tab",
+        "label": "DESCARGA USB",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "a1b1f2bdd5b2d11d",
         "type": "tab",
         "label": "CAN",
-        "disabled": false,
+        "disabled": true,
         "info": "",
         "env": []
     },
@@ -35,14 +43,6 @@
         "id": "87fe75fba6b00d60",
         "type": "tab",
         "label": "LOCALIZATION",
-        "disabled": false,
-        "info": "",
-        "env": []
-    },
-    {
-        "id": "93c938d261dc36e3",
-        "type": "tab",
-        "label": "DESCARGA USB",
         "disabled": false,
         "info": "",
         "env": []
@@ -314,7 +314,12 @@
             "a0b002195171260a",
             "f5322cda4a2f356c",
             "05d8f608fe5eb3a7",
-            "4512bff38c8cd675"
+            "4512bff38c8cd675",
+            "09cf833d23521682",
+            "2d67596ed3833f21",
+            "dd8a380bf429ee41",
+            "2f7815677a9ccbf3",
+            "1f4d74f8a25a0a45"
         ],
         "x": 234,
         "y": 259,
@@ -627,6 +632,60 @@
         "x": 670,
         "y": 500,
         "wires": []
+    },
+    {
+        "id": "f6957c60f691242c",
+        "type": "change",
+        "z": "9dcf4eee0723b8d2",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "connections",
+                "pt": "global",
+                "to": "{\"acme_server\":false,\"vpn_server\":false}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 420,
+        "y": 560,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e659df00a59847c2",
+        "type": "inject",
+        "z": "9dcf4eee0723b8d2",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 230,
+        "y": 560,
+        "wires": [
+            [
+                "f6957c60f691242c"
+            ]
+        ]
     },
     {
         "id": "f744467ba4084a45",
@@ -1712,7 +1771,7 @@
         "type": "exec",
         "z": "3f83026f71d41e6c",
         "g": "f3d20ca83e6edb3b",
-        "command": "/root/axotec_scripts/delete_older_file.sh",
+        "command": "/home/debian/gateway_scripts/delete_older_file.sh",
         "addpay": "",
         "append": "",
         "useSpawn": "false",
@@ -1720,7 +1779,7 @@
         "winHide": false,
         "oldrc": false,
         "name": "",
-        "x": 720,
+        "x": 750,
         "y": 160,
         "wires": [
             [
@@ -1804,7 +1863,7 @@
         "z": "3f83026f71d41e6c",
         "g": "24d00d6b1a472a12",
         "name": "Query ",
-        "func": "\nmsg.topic = `\n  SELECT * FROM local_data WHERE data < CURDATE();\n`;\n\nreturn msg;",
+        "func": "\nmsg.topic = `\n  SELECT * FROM local_data WHERE date < CURDATE();\n`;\n\nreturn msg;",
         "outputs": 1,
         "timeout": "",
         "noerr": 0,
@@ -1898,7 +1957,7 @@
         "z": "3f83026f71d41e6c",
         "g": "24d00d6b1a472a12",
         "name": "Procesar array para csv",
-        "func": "var array_in = msg.payload;\nvar array_out = [];\n\n// All data\nfor (var i = 0; i < array_in.length; i++) {\n    array_out[i] = JSON.parse(msg.payload[i].data);\n\n    // Converting simple timestamp to human readable\n    // time\n    array_out[i].timestamp = unixTimestampToHumanReadable(array_out[i].timestamp);\n}\n\n// Nombre del archivo CSV\nmsg.filename = `/root/ITEMAQ/ANGULAMIENTO/${array_out[0].timestamp.split(\" \")[0]} hasta ${array_out[array_out.length - 1].timestamp.split(\" \")[0]}`;\n\nmsg.payload = array_out;\n\nmsg.columns = Object.keys(msg.payload[0]).toString();\n\n\nreturn msg;\n\n\n\n// Function for timestamp to readable time\nfunction unixTimestampToHumanReadable(unixTimestamp) {\n    const date = new Date(unixTimestamp);\n    const year = date.getFullYear();\n    const month = (date.getMonth() + 1).toString().padStart(2, '0');\n    const day = date.getDate().toString().padStart(2, '0');\n    const hours = date.getHours().toString().padStart(2, '0');\n    const minutes = date.getMinutes().toString().padStart(2, '0');\n    const seconds = date.getSeconds().toString().padStart(2, '0');\n\n    return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;\n}\n",
+        "func": "var array_in = msg.payload;\nvar array_out = [];\n\n// All data\nfor (var i = 0; i < array_in.length; i++) {\n    array_out[i] = JSON.parse(msg.payload[i].data);\n\n    // Converting simple timestamp to human readable\n    // time\n    array_out[i].timestamp = unixTimestampToHumanReadable(array_out[i].timestamp);\n}\n\n// Nombre del archivo CSV\nmsg.filename = `/media/mmcblk0p1/csv-data/${array_out[0].timestamp.split(\" \")[0]} hasta ${array_out[array_out.length - 1].timestamp.split(\" \")[0]}.csv`;\n\nmsg.payload = array_out;\n\nmsg.columns = Object.keys(msg.payload[0]).toString();\n\n\nreturn msg;\n\n\n\n// Function for timestamp to readable time\nfunction unixTimestampToHumanReadable(unixTimestamp) {\n    const date = new Date(unixTimestamp);\n    const year = date.getFullYear();\n    const month = (date.getMonth() + 1).toString().padStart(2, '0');\n    const day = date.getDate().toString().padStart(2, '0');\n    const hours = date.getHours().toString().padStart(2, '0');\n    const minutes = date.getMinutes().toString().padStart(2, '0');\n    const seconds = date.getSeconds().toString().padStart(2, '0');\n\n    return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;\n}\n",
         "outputs": 1,
         "timeout": "",
         "noerr": 0,
@@ -1986,8 +2045,7 @@
         "y": 340,
         "wires": [
             [
-                "c304b9efafbee2ce",
-                "4512bff38c8cd675"
+                "c304b9efafbee2ce"
             ]
         ]
     },
@@ -2015,7 +2073,7 @@
         "y": 400,
         "wires": [
             [
-                "5c869004c94f9e5b"
+                "09cf833d23521682"
             ]
         ]
     },
@@ -2029,8 +2087,689 @@
         "links": [
             "1bb50ae54662e6ff"
         ],
-        "x": 1815,
+        "x": 1415,
         "y": 400,
+        "wires": []
+    },
+    {
+        "id": "09cf833d23521682",
+        "type": "function",
+        "z": "3f83026f71d41e6c",
+        "g": "24d00d6b1a472a12",
+        "name": "Query ",
+        "func": "\nmsg.topic = `\n  SELECT * FROM local_data WHERE date < NOW();\n`;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 550,
+        "y": 400,
+        "wires": [
+            [
+                "2d67596ed3833f21"
+            ]
+        ]
+    },
+    {
+        "id": "2d67596ed3833f21",
+        "type": "mysql",
+        "z": "3f83026f71d41e6c",
+        "g": "24d00d6b1a472a12",
+        "mydb": "45598baf2af77f76",
+        "name": "",
+        "x": 740,
+        "y": 400,
+        "wires": [
+            [
+                "dd8a380bf429ee41"
+            ]
+        ]
+    },
+    {
+        "id": "dd8a380bf429ee41",
+        "type": "function",
+        "z": "3f83026f71d41e6c",
+        "g": "24d00d6b1a472a12",
+        "name": "Procesar array para csv",
+        "func": "var array_in = msg.payload;\nvar array_out = [];\n\n// All data\nfor (var i = 0; i < array_in.length; i++) {\n    array_out[i] = JSON.parse(msg.payload[i].data);\n\n    // Converting simple timestamp to human readable\n    // time\n    array_out[i].timestamp = unixTimestampToHumanReadable(array_out[i].timestamp);\n}\n\n// Nombre del archivo CSV\nmsg.filename = `/media/mmcblk0p1/csv-data/${array_out[0].timestamp.split(\" \")[0]} hasta ${array_out[array_out.length - 1].timestamp.split(\" \")[0]}.csv`;\n\nmsg.payload = array_out;\n\nmsg.columns = Object.keys(msg.payload[0]).toString();\n\n\nreturn msg;\n\n\n\n// Function for timestamp to readable time\nfunction unixTimestampToHumanReadable(unixTimestamp) {\n    const date = new Date(unixTimestamp);\n    const year = date.getFullYear();\n    const month = (date.getMonth() + 1).toString().padStart(2, '0');\n    const day = date.getDate().toString().padStart(2, '0');\n    const hours = date.getHours().toString().padStart(2, '0');\n    const minutes = date.getMinutes().toString().padStart(2, '0');\n    const seconds = date.getSeconds().toString().padStart(2, '0');\n\n    return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;\n}\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 950,
+        "y": 400,
+        "wires": [
+            [
+                "2f7815677a9ccbf3"
+            ]
+        ]
+    },
+    {
+        "id": "2f7815677a9ccbf3",
+        "type": "function",
+        "z": "3f83026f71d41e6c",
+        "g": "24d00d6b1a472a12",
+        "name": "csv",
+        "func": "function arrayToCSV(data) {\n    // Verificar si el array de datos está vacío\n    if (data.length === 0) {\n        return '';\n    }\n\n    // Obtener las claves del primer objeto JSON para los encabezados de columna\n    const keys = Object.keys(data[0]);\n\n    // Construir los encabezados de columna\n    const headerRow = keys.join(',');\n\n    // Construir filas del CSV\n    const csvRows = [];\n    csvRows.push(headerRow);\n\n    for (const obj of data) {\n        const values = keys.map(key => obj[key]);\n        const csvRow = values.join(',');\n        csvRows.push(csvRow);\n    }\n\n    // Unir todas las filas con saltos de línea\n    return csvRows.join('\\n');\n}\n// Convertir el array de objetos JSON a una cadena CSV\nconst csvString = arrayToCSV(msg.payload);\nmsg.payload = csvString;\n\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1130,
+        "y": 400,
+        "wires": [
+            [
+                "1f4d74f8a25a0a45"
+            ]
+        ]
+    },
+    {
+        "id": "1f4d74f8a25a0a45",
+        "type": "file",
+        "z": "3f83026f71d41e6c",
+        "g": "24d00d6b1a472a12",
+        "name": "",
+        "filename": "filename",
+        "filenameType": "msg",
+        "appendNewline": true,
+        "createDir": true,
+        "overwriteFile": "true",
+        "encoding": "utf8",
+        "x": 1280,
+        "y": 400,
+        "wires": [
+            [
+                "4512bff38c8cd675"
+            ]
+        ]
+    },
+    {
+        "id": "0fa85570732327d9",
+        "type": "exec",
+        "z": "93c938d261dc36e3",
+        "command": "sudo mkdir /media/USB; sudo mount /dev/sda1 /media/USB/",
+        "addpay": "",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "Montar USB",
+        "x": 470,
+        "y": 260,
+        "wires": [
+            [],
+            [],
+            [
+                "7cb1bfa6ee14cd59",
+                "ff7ad3076536a801"
+            ]
+        ]
+    },
+    {
+        "id": "908fa73116dffd7a",
+        "type": "exec",
+        "z": "93c938d261dc36e3",
+        "command": "sudo umount /media/USB",
+        "addpay": "",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "Desmontar USB",
+        "x": 860,
+        "y": 480,
+        "wires": [
+            [],
+            [],
+            [
+                "eb67adf7cd48d352",
+                "484501af6a01d73c"
+            ]
+        ]
+    },
+    {
+        "id": "f0909c5883cf2bb5",
+        "type": "delay",
+        "z": "93c938d261dc36e3",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 300,
+        "y": 320,
+        "wires": [
+            [
+                "0fa85570732327d9"
+            ]
+        ]
+    },
+    {
+        "id": "611c4768cd164731",
+        "type": "delay",
+        "z": "93c938d261dc36e3",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "1",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 500,
+        "y": 360,
+        "wires": [
+            [
+                "24491a42e5626d87"
+            ]
+        ]
+    },
+    {
+        "id": "79c85eb3c32b4cec",
+        "type": "delay",
+        "z": "93c938d261dc36e3",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "1",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 680,
+        "y": 480,
+        "wires": [
+            [
+                "908fa73116dffd7a"
+            ]
+        ]
+    },
+    {
+        "id": "5913ac761e735950",
+        "type": "exec",
+        "z": "93c938d261dc36e3",
+        "command": "encender luz verde y apagar rojo",
+        "addpay": "",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "",
+        "x": 1360,
+        "y": 660,
+        "wires": [
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "411b82cd9be62670",
+        "type": "exec",
+        "z": "93c938d261dc36e3",
+        "command": "sudo umount /media/USB",
+        "addpay": "",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "Desmontar USB",
+        "x": 280,
+        "y": 600,
+        "wires": [
+            [],
+            [],
+            [
+                "36c50bea4f163c33"
+            ]
+        ]
+    },
+    {
+        "id": "8280a977f37e7427",
+        "type": "exec",
+        "z": "93c938d261dc36e3",
+        "command": "Apagar led rojo",
+        "addpay": "",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "",
+        "x": 680,
+        "y": 100,
+        "wires": [
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "7c8765ccbcef1d36",
+        "type": "inject",
+        "z": "93c938d261dc36e3",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 330,
+        "y": 60,
+        "wires": [
+            [
+                "8280a977f37e7427",
+                "a24ecf78cb9c4bcd"
+            ]
+        ]
+    },
+    {
+        "id": "eb67adf7cd48d352",
+        "type": "debug",
+        "z": "93c938d261dc36e3",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1070,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "24491a42e5626d87",
+        "type": "link out",
+        "z": "93c938d261dc36e3",
+        "name": "descarga_usb",
+        "mode": "link",
+        "links": [
+            "453da7bdd0eca604",
+            "08ef0af123c7225b",
+            "05d8f608fe5eb3a7",
+            "863f91b1290010b4"
+        ],
+        "x": 605,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "1bb50ae54662e6ff",
+        "type": "link in",
+        "z": "93c938d261dc36e3",
+        "name": "descarga_done",
+        "links": [
+            "f89cd51984aeef3d",
+            "fa52f9efaa73c12b",
+            "4512bff38c8cd675",
+            "c75c61cf2dd42916"
+        ],
+        "x": 805,
+        "y": 400,
+        "wires": [
+            [
+                "09f0e4f9549d2ba9"
+            ]
+        ]
+    },
+    {
+        "id": "09f0e4f9549d2ba9",
+        "type": "exec",
+        "z": "93c938d261dc36e3",
+        "command": "sudo cp -r /media/mmcblk0p1/csv-data /media/USB",
+        "addpay": "",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "copiar la data disponible",
+        "x": 950,
+        "y": 400,
+        "wires": [
+            [],
+            [],
+            [
+                "79c85eb3c32b4cec"
+            ]
+        ]
+    },
+    {
+        "id": "bb293532cfb39e99",
+        "type": "comment",
+        "z": "93c938d261dc36e3",
+        "name": "saving csv",
+        "info": "",
+        "x": 700,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "36c50bea4f163c33",
+        "type": "debug",
+        "z": "93c938d261dc36e3",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 870,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "484501af6a01d73c",
+        "type": "function",
+        "z": "93c938d261dc36e3",
+        "name": "",
+        "func": "if (msg.payload.code == 0){\n    node.status({ fill: \"green\", shape: \"dot\", text: \"usb connected\" });\n    return [null, msg];\n    \n}\nelse{\n    node.status({ fill: \"red\", shape: \"ring\", text: \"usb disconnected\" });\n    return [msg, null];\n}\n",
+        "outputs": 2,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1100,
+        "y": 600,
+        "wires": [
+            [
+                "39db48e634e5f68e"
+            ],
+            [
+                "5913ac761e735950"
+            ]
+        ]
+    },
+    {
+        "id": "68ad270c7e3aa592",
+        "type": "inject",
+        "z": "93c938d261dc36e3",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 660,
+        "y": 540,
+        "wires": [
+            [
+                "908fa73116dffd7a"
+            ]
+        ]
+    },
+    {
+        "id": "b896e77a5281950e",
+        "type": "debug",
+        "z": "93c938d261dc36e3",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 470,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "559d7dc0b202b6ec",
+        "type": "comment",
+        "z": "93c938d261dc36e3",
+        "name": "2 es luz verde, 3 es luz roja",
+        "info": "",
+        "x": 1110,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "a24ecf78cb9c4bcd",
+        "type": "exec",
+        "z": "93c938d261dc36e3",
+        "command": "echo 0 > /dev/diod2",
+        "addpay": "",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "Apagar led verde",
+        "x": 690,
+        "y": 40,
+        "wires": [
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "39db48e634e5f68e",
+        "type": "exec",
+        "z": "93c938d261dc36e3",
+        "command": "apagar luz verde y rojo",
+        "addpay": "",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "",
+        "x": 1320,
+        "y": 500,
+        "wires": [
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "7cb1bfa6ee14cd59",
+        "type": "function",
+        "z": "93c938d261dc36e3",
+        "name": "USB Connection status",
+        "func": "if (msg.payload.code == 0){\n    node.status({ fill: \"green\", shape: \"dot\", text: \"usb connected\" });\n    return [null, msg];\n    \n}\nelse{\n    node.status({ fill: \"red\", shape: \"ring\", text: \"usb disconnected\" });\n    return [msg, null];\n}\n",
+        "outputs": 2,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 710,
+        "y": 260,
+        "wires": [
+            [
+                "739dd41c60b23bc3",
+                "22b0ef4b2bb6549f"
+            ],
+            [
+                "611c4768cd164731",
+                "229853d773372920"
+            ]
+        ]
+    },
+    {
+        "id": "739dd41c60b23bc3",
+        "type": "exec",
+        "z": "93c938d261dc36e3",
+        "command": "/root/axotec_scripts/blink_red_led.sh",
+        "addpay": "",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "Parpadear led rojo por fallo",
+        "x": 1080,
+        "y": 240,
+        "wires": [
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "c8180879340f9797",
+        "type": "usb-watch",
+        "z": "93c938d261dc36e3",
+        "name": "",
+        "initialScan": false,
+        "x": 80,
+        "y": 460,
+        "wires": [
+            [
+                "b896e77a5281950e",
+                "f0909c5883cf2bb5",
+                "267bd568987c89b8"
+            ],
+            [
+                "411b82cd9be62670",
+                "53a73f2f21e96833"
+            ]
+        ]
+    },
+    {
+        "id": "267bd568987c89b8",
+        "type": "exec",
+        "z": "93c938d261dc36e3",
+        "command": "echo 1 > /dev/diod3; echo 0 > /dev/diod2",
+        "addpay": "",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "encender luz roja y apagar luz verde",
+        "x": 350,
+        "y": 180,
+        "wires": [
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "53a73f2f21e96833",
+        "type": "exec",
+        "z": "93c938d261dc36e3",
+        "command": "echo 1 > /dev/diod3; echo 0 > /dev/diod2",
+        "addpay": "",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "apagar luz verde y roja",
+        "x": 300,
+        "y": 680,
+        "wires": [
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "ff7ad3076536a801",
+        "type": "debug",
+        "z": "93c938d261dc36e3",
+        "name": "debug 128",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 730,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "229853d773372920",
+        "type": "debug",
+        "z": "93c938d261dc36e3",
+        "name": "debug 129",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 990,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "22b0ef4b2bb6549f",
+        "type": "debug",
+        "z": "93c938d261dc36e3",
+        "name": "debug 130",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 930,
+        "y": 200,
         "wires": []
     },
     {
@@ -3086,692 +3825,6 @@
         "wires": []
     },
     {
-        "id": "0fa85570732327d9",
-        "type": "exec",
-        "z": "93c938d261dc36e3",
-        "command": "sudo mount /dev/sda1 /media/USB/",
-        "addpay": "",
-        "append": "",
-        "useSpawn": "false",
-        "timer": "",
-        "winHide": false,
-        "oldrc": false,
-        "name": "",
-        "x": 540,
-        "y": 260,
-        "wires": [
-            [],
-            [],
-            [
-                "b203a6cd49bb65a4"
-            ]
-        ]
-    },
-    {
-        "id": "908fa73116dffd7a",
-        "type": "exec",
-        "z": "93c938d261dc36e3",
-        "command": "umount /media/USB",
-        "addpay": "",
-        "append": "",
-        "useSpawn": "false",
-        "timer": "",
-        "winHide": false,
-        "oldrc": false,
-        "name": "",
-        "x": 880,
-        "y": 480,
-        "wires": [
-            [],
-            [],
-            [
-                "eb67adf7cd48d352",
-                "484501af6a01d73c"
-            ]
-        ]
-    },
-    {
-        "id": "f0909c5883cf2bb5",
-        "type": "delay",
-        "z": "93c938d261dc36e3",
-        "name": "",
-        "pauseType": "delay",
-        "timeout": "5",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "allowrate": false,
-        "outputs": 1,
-        "x": 300,
-        "y": 320,
-        "wires": [
-            [
-                "0fa85570732327d9"
-            ]
-        ]
-    },
-    {
-        "id": "611c4768cd164731",
-        "type": "delay",
-        "z": "93c938d261dc36e3",
-        "name": "",
-        "pauseType": "delay",
-        "timeout": "1",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "allowrate": false,
-        "outputs": 1,
-        "x": 500,
-        "y": 360,
-        "wires": [
-            [
-                "24491a42e5626d87"
-            ]
-        ]
-    },
-    {
-        "id": "79c85eb3c32b4cec",
-        "type": "delay",
-        "z": "93c938d261dc36e3",
-        "name": "",
-        "pauseType": "delay",
-        "timeout": "1",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "allowrate": false,
-        "outputs": 1,
-        "x": 680,
-        "y": 480,
-        "wires": [
-            [
-                "908fa73116dffd7a"
-            ]
-        ]
-    },
-    {
-        "id": "6cae6ebd51676aa2",
-        "type": "exec",
-        "z": "93c938d261dc36e3",
-        "command": "echo 1 > /dev/usrled3; echo 0 > /dev/usrled2",
-        "addpay": "",
-        "append": "",
-        "useSpawn": "false",
-        "timer": "",
-        "winHide": false,
-        "oldrc": false,
-        "name": "",
-        "x": 510,
-        "y": 180,
-        "wires": [
-            [],
-            [],
-            []
-        ]
-    },
-    {
-        "id": "5913ac761e735950",
-        "type": "exec",
-        "z": "93c938d261dc36e3",
-        "command": "echo 0 > /dev/usrled3; echo 1 > /dev/usrled2",
-        "addpay": "",
-        "append": "",
-        "useSpawn": "false",
-        "timer": "",
-        "winHide": false,
-        "oldrc": false,
-        "name": "",
-        "x": 1390,
-        "y": 660,
-        "wires": [
-            [],
-            [],
-            [
-                "95b9733afe4cfa28"
-            ]
-        ]
-    },
-    {
-        "id": "411b82cd9be62670",
-        "type": "exec",
-        "z": "93c938d261dc36e3",
-        "command": "sudo umount /media/USB",
-        "addpay": "",
-        "append": "",
-        "useSpawn": "false",
-        "timer": "",
-        "winHide": false,
-        "oldrc": false,
-        "name": "",
-        "x": 310,
-        "y": 600,
-        "wires": [
-            [],
-            [],
-            [
-                "36c50bea4f163c33"
-            ]
-        ]
-    },
-    {
-        "id": "8280a977f37e7427",
-        "type": "exec",
-        "z": "93c938d261dc36e3",
-        "command": "echo 0 > /dev/diod3",
-        "addpay": "",
-        "append": "",
-        "useSpawn": "false",
-        "timer": "",
-        "winHide": false,
-        "oldrc": false,
-        "name": "",
-        "x": 950,
-        "y": 980,
-        "wires": [
-            [],
-            [],
-            []
-        ]
-    },
-    {
-        "id": "3b41906495a76b75",
-        "type": "exec",
-        "z": "93c938d261dc36e3",
-        "command": "echo 0 > /dev/usrled2",
-        "addpay": "",
-        "append": "",
-        "useSpawn": "false",
-        "timer": "",
-        "winHide": false,
-        "oldrc": false,
-        "name": "",
-        "x": 960,
-        "y": 860,
-        "wires": [
-            [],
-            [],
-            []
-        ]
-    },
-    {
-        "id": "7c8765ccbcef1d36",
-        "type": "inject",
-        "z": "93c938d261dc36e3",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": true,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 730,
-        "y": 940,
-        "wires": [
-            [
-                "3b41906495a76b75",
-                "8280a977f37e7427",
-                "a24ecf78cb9c4bcd",
-                "6599757e27dee406"
-            ]
-        ]
-    },
-    {
-        "id": "eb67adf7cd48d352",
-        "type": "debug",
-        "z": "93c938d261dc36e3",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1070,
-        "y": 480,
-        "wires": []
-    },
-    {
-        "id": "24491a42e5626d87",
-        "type": "link out",
-        "z": "93c938d261dc36e3",
-        "name": "descarga_usb",
-        "mode": "link",
-        "links": [
-            "453da7bdd0eca604",
-            "08ef0af123c7225b",
-            "05d8f608fe5eb3a7",
-            "863f91b1290010b4"
-        ],
-        "x": 605,
-        "y": 400,
-        "wires": []
-    },
-    {
-        "id": "1bb50ae54662e6ff",
-        "type": "link in",
-        "z": "93c938d261dc36e3",
-        "name": "descarga_done",
-        "links": [
-            "f89cd51984aeef3d",
-            "fa52f9efaa73c12b",
-            "4512bff38c8cd675",
-            "c75c61cf2dd42916"
-        ],
-        "x": 805,
-        "y": 400,
-        "wires": [
-            [
-                "09f0e4f9549d2ba9"
-            ]
-        ]
-    },
-    {
-        "id": "09f0e4f9549d2ba9",
-        "type": "exec",
-        "z": "93c938d261dc36e3",
-        "command": "cp -r /root/ITEMAQ/ANGULAMIENTO /media/USB",
-        "addpay": "",
-        "append": "",
-        "useSpawn": "false",
-        "timer": "",
-        "winHide": false,
-        "oldrc": false,
-        "name": "",
-        "x": 1030,
-        "y": 400,
-        "wires": [
-            [],
-            [],
-            [
-                "79c85eb3c32b4cec"
-            ]
-        ]
-    },
-    {
-        "id": "bb293532cfb39e99",
-        "type": "comment",
-        "z": "93c938d261dc36e3",
-        "name": "saving csv",
-        "info": "",
-        "x": 700,
-        "y": 400,
-        "wires": []
-    },
-    {
-        "id": "36c50bea4f163c33",
-        "type": "debug",
-        "z": "93c938d261dc36e3",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 870,
-        "y": 700,
-        "wires": []
-    },
-    {
-        "id": "484501af6a01d73c",
-        "type": "function",
-        "z": "93c938d261dc36e3",
-        "name": "",
-        "func": "if (msg.payload.code == 0){\n    node.status({ fill: \"green\", shape: \"dot\", text: \"usb connected\" });\n    return [null, msg];\n    \n}\nelse{\n    node.status({ fill: \"red\", shape: \"ring\", text: \"usb disconnected\" });\n    return [msg, null];\n}\n",
-        "outputs": 2,
-        "timeout": "",
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1100,
-        "y": 600,
-        "wires": [
-            [
-                "af2952fef3c4bb96",
-                "39db48e634e5f68e"
-            ],
-            [
-                "5913ac761e735950",
-                "ca21724456fbfc8b"
-            ]
-        ]
-    },
-    {
-        "id": "af2952fef3c4bb96",
-        "type": "exec",
-        "z": "93c938d261dc36e3",
-        "command": "echo 0 > /dev/usrled3; echo 0 > /dev/usrled2",
-        "addpay": "",
-        "append": "",
-        "useSpawn": "false",
-        "timer": "",
-        "winHide": false,
-        "oldrc": false,
-        "name": "",
-        "x": 1390,
-        "y": 560,
-        "wires": [
-            [],
-            [],
-            [
-                "cd3920d3e89b9edd"
-            ]
-        ]
-    },
-    {
-        "id": "68ad270c7e3aa592",
-        "type": "inject",
-        "z": "93c938d261dc36e3",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 660,
-        "y": 540,
-        "wires": [
-            [
-                "908fa73116dffd7a"
-            ]
-        ]
-    },
-    {
-        "id": "cd3920d3e89b9edd",
-        "type": "debug",
-        "z": "93c938d261dc36e3",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1650,
-        "y": 540,
-        "wires": []
-    },
-    {
-        "id": "95b9733afe4cfa28",
-        "type": "debug",
-        "z": "93c938d261dc36e3",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1650,
-        "y": 660,
-        "wires": []
-    },
-    {
-        "id": "b896e77a5281950e",
-        "type": "debug",
-        "z": "93c938d261dc36e3",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 470,
-        "y": 460,
-        "wires": []
-    },
-    {
-        "id": "267bd568987c89b8",
-        "type": "exec",
-        "z": "93c938d261dc36e3",
-        "command": "echo 1 > /dev/diod3; echo 0 > /dev/diod2",
-        "addpay": "",
-        "append": "",
-        "useSpawn": "false",
-        "timer": "",
-        "winHide": false,
-        "oldrc": false,
-        "name": "",
-        "x": 500,
-        "y": 120,
-        "wires": [
-            [],
-            [],
-            []
-        ]
-    },
-    {
-        "id": "42e2da368acfdb16",
-        "type": "exec",
-        "z": "93c938d261dc36e3",
-        "command": "echo 0 > /dev/diod3; echo 0 > /dev/diod2",
-        "addpay": "",
-        "append": "",
-        "useSpawn": "false",
-        "timer": "",
-        "winHide": false,
-        "oldrc": false,
-        "name": "",
-        "x": 300,
-        "y": 740,
-        "wires": [
-            [],
-            [],
-            []
-        ]
-    },
-    {
-        "id": "559d7dc0b202b6ec",
-        "type": "comment",
-        "z": "93c938d261dc36e3",
-        "name": "2 es luz verde, 3 es luz roja",
-        "info": "",
-        "x": 870,
-        "y": 160,
-        "wires": []
-    },
-    {
-        "id": "a24ecf78cb9c4bcd",
-        "type": "exec",
-        "z": "93c938d261dc36e3",
-        "command": "echo 0 > /dev/diod2",
-        "addpay": "",
-        "append": "",
-        "useSpawn": "false",
-        "timer": "",
-        "winHide": false,
-        "oldrc": false,
-        "name": "",
-        "x": 950,
-        "y": 800,
-        "wires": [
-            [],
-            [],
-            []
-        ]
-    },
-    {
-        "id": "6599757e27dee406",
-        "type": "exec",
-        "z": "93c938d261dc36e3",
-        "command": "echo 0 > /dev/diod3",
-        "addpay": "",
-        "append": "",
-        "useSpawn": "false",
-        "timer": "",
-        "winHide": false,
-        "oldrc": false,
-        "name": "",
-        "x": 950,
-        "y": 1040,
-        "wires": [
-            [],
-            [],
-            []
-        ]
-    },
-    {
-        "id": "39db48e634e5f68e",
-        "type": "exec",
-        "z": "93c938d261dc36e3",
-        "command": "echo 0 > /dev/diod3; echo 0 > /dev/diod2",
-        "addpay": "",
-        "append": "",
-        "useSpawn": "false",
-        "timer": "",
-        "winHide": false,
-        "oldrc": false,
-        "name": "",
-        "x": 1380,
-        "y": 520,
-        "wires": [
-            [],
-            [],
-            []
-        ]
-    },
-    {
-        "id": "ca21724456fbfc8b",
-        "type": "exec",
-        "z": "93c938d261dc36e3",
-        "command": "echo 0 > /dev/diod3; echo 1 > /dev/diod2",
-        "addpay": "",
-        "append": "",
-        "useSpawn": "false",
-        "timer": "",
-        "winHide": false,
-        "oldrc": false,
-        "name": "",
-        "x": 1380,
-        "y": 720,
-        "wires": [
-            [],
-            [],
-            []
-        ]
-    },
-    {
-        "id": "7cb1bfa6ee14cd59",
-        "type": "function",
-        "z": "93c938d261dc36e3",
-        "name": "",
-        "func": "if (msg.payload.code == 0){\n    node.status({ fill: \"green\", shape: \"dot\", text: \"usb connected\" });\n    return [null, msg];\n    \n}\nelse{\n    node.status({ fill: \"red\", shape: \"ring\", text: \"usb disconnected\" });\n    return [msg, null];\n}\n",
-        "outputs": 2,
-        "timeout": "",
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 960,
-        "y": 280,
-        "wires": [
-            [
-                "739dd41c60b23bc3"
-            ],
-            [
-                "611c4768cd164731"
-            ]
-        ]
-    },
-    {
-        "id": "739dd41c60b23bc3",
-        "type": "exec",
-        "z": "93c938d261dc36e3",
-        "command": "/root/axotec_scripts/blink_red_led.sh",
-        "addpay": "",
-        "append": "",
-        "useSpawn": "false",
-        "timer": "",
-        "winHide": false,
-        "oldrc": false,
-        "name": "",
-        "x": 1230,
-        "y": 240,
-        "wires": [
-            [],
-            [],
-            []
-        ]
-    },
-    {
-        "id": "c8180879340f9797",
-        "type": "usb-watch",
-        "z": "93c938d261dc36e3",
-        "name": "",
-        "initialScan": false,
-        "x": 80,
-        "y": 460,
-        "wires": [
-            [
-                "b896e77a5281950e",
-                "f0909c5883cf2bb5"
-            ],
-            [
-                "411b82cd9be62670"
-            ]
-        ]
-    },
-    {
-        "id": "b203a6cd49bb65a4",
-        "type": "debug",
-        "z": "93c938d261dc36e3",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 790,
-        "y": 300,
-        "wires": []
-    },
-    {
         "id": "dbaf8b3efeaabf37",
         "type": "change",
         "z": "ac1b7f858f654d07",
@@ -3990,60 +4043,6 @@
         "x": 1120,
         "y": 500,
         "wires": []
-    },
-    {
-        "id": "f6957c60f691242c",
-        "type": "change",
-        "z": "ac1b7f858f654d07",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "connections",
-                "pt": "global",
-                "to": "{\"acme_server\":false,\"vpn_server\":false}",
-                "tot": "json"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 680,
-        "y": 40,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "e659df00a59847c2",
-        "type": "inject",
-        "z": "ac1b7f858f654d07",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": true,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 490,
-        "y": 40,
-        "wires": [
-            [
-                "f6957c60f691242c"
-            ]
-        ]
     },
     {
         "id": "227c7884566505e1",
