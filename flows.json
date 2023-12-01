@@ -78,7 +78,6 @@
             "121f11e8ca291a0e",
             "c4c0299bf7185dbc",
             "bcd67702c395a8fb",
-            "40658d607094abce",
             "838733237fd1d982",
             "80cc8c7dae71c897",
             "04c1122e78e23c08",
@@ -149,18 +148,19 @@
             "color": "#000000"
         },
         "nodes": [
-            "36974351050e81e2",
             "dbaf8b3efeaabf37",
             "969b2948e1ba5ece",
             "ee185204f3df637f",
             "30361390301119e6",
             "369a679a146cb309",
             "48fe66a37a5d4455",
-            "47371280d37afc93"
+            "47371280d37afc93",
+            "25de188a7a085732",
+            "48658aa020f8e9fe"
         ],
         "x": 74,
         "y": 79,
-        "w": 1212,
+        "w": 1352,
         "h": 242
     },
     {
@@ -173,18 +173,19 @@
             "color": "#000000"
         },
         "nodes": [
-            "24694e9174f9ea7c",
             "f884311d2c1d9673",
-            "a25ce97d8a1e53e6",
             "b64c3a8d66676f32",
             "594f458e05d10cbd",
             "0108dea861a38364",
-            "227c7884566505e1"
+            "227c7884566505e1",
+            "edc108b46726314b",
+            "27afe5b90432db76",
+            "6ea80da8b90fdb9f"
         ],
         "x": 54,
-        "y": 359,
-        "w": 1072,
-        "h": 182
+        "y": 339,
+        "w": 1232,
+        "h": 222
     },
     {
         "id": "f2e2e6faa602b3b4",
@@ -337,25 +338,6 @@
         "db": "acme_db",
         "tz": "",
         "charset": "UTF8"
-    },
-    {
-        "id": "eadfda525a15b034",
-        "type": "serial-port",
-        "serialport": "/dev/ttyUSB1",
-        "serialbaud": "115200",
-        "databits": "8",
-        "parity": "none",
-        "stopbits": "1",
-        "waitfor": "",
-        "dtr": "none",
-        "rts": "none",
-        "cts": "none",
-        "dsr": "none",
-        "newline": "\\n",
-        "bin": "false",
-        "out": "char",
-        "addchar": "",
-        "responsetimeout": "10000"
     },
     {
         "id": "d4c91e04aba283b0",
@@ -1238,94 +1220,6 @@
         ]
     },
     {
-        "id": "40658d607094abce",
-        "type": "flat",
-        "z": "d91ac3d282c069d0",
-        "g": "6b7c1f4fbbe77c84",
-        "name": "",
-        "x": 490,
-        "y": 1080,
-        "wires": [
-            [
-                "bcd67702c395a8fb"
-            ]
-        ]
-    },
-    {
-        "id": "89c8205089453bdc",
-        "type": "mysql",
-        "z": "d91ac3d282c069d0",
-        "g": "a5bc3a1930f09c8f",
-        "mydb": "45598baf2af77f76",
-        "name": "",
-        "x": 480,
-        "y": 740,
-        "wires": [
-            [
-                "a92b564f771f2512",
-                "45c703090ffad7f3"
-            ]
-        ]
-    },
-    {
-        "id": "c4c0299bf7185dbc",
-        "type": "mysql",
-        "z": "d91ac3d282c069d0",
-        "g": "6b7c1f4fbbe77c84",
-        "mydb": "45598baf2af77f76",
-        "name": "",
-        "x": 940,
-        "y": 1080,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "e9eeb5845b5972aa",
-        "type": "mysql",
-        "z": "d91ac3d282c069d0",
-        "g": "65c598bb5234d69b",
-        "mydb": "45598baf2af77f76",
-        "name": "",
-        "x": 700,
-        "y": 500,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "de31a22e8417c259",
-        "type": "mysql",
-        "z": "d91ac3d282c069d0",
-        "g": "a5bc3a1930f09c8f",
-        "mydb": "45598baf2af77f76",
-        "name": "",
-        "x": 920,
-        "y": 860,
-        "wires": [
-            [
-                "124808048f0bda31"
-            ]
-        ]
-    },
-    {
-        "id": "2808688270ae7e19",
-        "type": "mysql",
-        "z": "d91ac3d282c069d0",
-        "d": true,
-        "g": "f2e2e6faa602b3b4",
-        "mydb": "45598baf2af77f76",
-        "name": "",
-        "x": 540,
-        "y": 1920,
-        "wires": [
-            [
-                "1696a641113f4ebb",
-                "e6ea489a3988f9d3"
-            ]
-        ]
-    },
-    {
         "id": "04c1122e78e23c08",
         "type": "debug",
         "z": "d91ac3d282c069d0",
@@ -1359,7 +1253,6 @@
         "y": 1080,
         "wires": [
             [
-                "40658d607094abce",
                 "04c1122e78e23c08"
             ]
         ]
@@ -1382,21 +1275,6 @@
         "wires": [
             [
                 "6be862ef70aa5ce0"
-            ]
-        ]
-    },
-    {
-        "id": "6be862ef70aa5ce0",
-        "type": "mysql",
-        "z": "d91ac3d282c069d0",
-        "g": "24d00d6b1a472a12",
-        "mydb": "45598baf2af77f76",
-        "name": "",
-        "x": 580,
-        "y": 1240,
-        "wires": [
-            [
-                "bdd4d3fb6e929cc7"
             ]
         ]
     },
@@ -1542,22 +1420,6 @@
         ]
     },
     {
-        "id": "a0b002195171260a",
-        "type": "mysql",
-        "z": "d91ac3d282c069d0",
-        "g": "24d00d6b1a472a12",
-        "mydb": "45598baf2af77f76",
-        "name": "",
-        "x": 1480,
-        "y": 1240,
-        "wires": [
-            [
-                "c304b9efafbee2ce",
-                "4512bff38c8cd675"
-            ]
-        ]
-    },
-    {
         "id": "ac795a621f12d022",
         "type": "exec",
         "z": "d91ac3d282c069d0",
@@ -1649,22 +1511,6 @@
         "wires": [
             [
                 "58836c8d2ead4daa"
-            ]
-        ]
-    },
-    {
-        "id": "58836c8d2ead4daa",
-        "type": "mysql",
-        "z": "d91ac3d282c069d0",
-        "d": true,
-        "g": "1a0d550707f8cc4f",
-        "mydb": "45598baf2af77f76",
-        "name": "",
-        "x": 560,
-        "y": 1720,
-        "wires": [
-            [
-                "7f4121ee2de54254"
             ]
         ]
     },
@@ -1837,6 +1683,127 @@
         "wires": [
             [
                 "0c617771a3bf80f9"
+            ]
+        ]
+    },
+    {
+        "id": "89c8205089453bdc",
+        "type": "mysql",
+        "z": "d91ac3d282c069d0",
+        "g": "a5bc3a1930f09c8f",
+        "mydb": "45598baf2af77f76",
+        "name": "",
+        "x": 480,
+        "y": 740,
+        "wires": [
+            [
+                "a92b564f771f2512",
+                "45c703090ffad7f3"
+            ]
+        ]
+    },
+    {
+        "id": "c4c0299bf7185dbc",
+        "type": "mysql",
+        "z": "d91ac3d282c069d0",
+        "g": "6b7c1f4fbbe77c84",
+        "mydb": "45598baf2af77f76",
+        "name": "",
+        "x": 940,
+        "y": 1080,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e9eeb5845b5972aa",
+        "type": "mysql",
+        "z": "d91ac3d282c069d0",
+        "g": "65c598bb5234d69b",
+        "mydb": "45598baf2af77f76",
+        "name": "",
+        "x": 740,
+        "y": 500,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "de31a22e8417c259",
+        "type": "mysql",
+        "z": "d91ac3d282c069d0",
+        "g": "a5bc3a1930f09c8f",
+        "mydb": "45598baf2af77f76",
+        "name": "",
+        "x": 920,
+        "y": 860,
+        "wires": [
+            [
+                "124808048f0bda31"
+            ]
+        ]
+    },
+    {
+        "id": "2808688270ae7e19",
+        "type": "mysql",
+        "z": "d91ac3d282c069d0",
+        "d": true,
+        "g": "f2e2e6faa602b3b4",
+        "mydb": "45598baf2af77f76",
+        "name": "",
+        "x": 540,
+        "y": 1920,
+        "wires": [
+            [
+                "1696a641113f4ebb",
+                "e6ea489a3988f9d3"
+            ]
+        ]
+    },
+    {
+        "id": "6be862ef70aa5ce0",
+        "type": "mysql",
+        "z": "d91ac3d282c069d0",
+        "g": "24d00d6b1a472a12",
+        "mydb": "45598baf2af77f76",
+        "name": "",
+        "x": 580,
+        "y": 1240,
+        "wires": [
+            [
+                "bdd4d3fb6e929cc7"
+            ]
+        ]
+    },
+    {
+        "id": "a0b002195171260a",
+        "type": "mysql",
+        "z": "d91ac3d282c069d0",
+        "g": "24d00d6b1a472a12",
+        "mydb": "45598baf2af77f76",
+        "name": "",
+        "x": 1480,
+        "y": 1240,
+        "wires": [
+            [
+                "c304b9efafbee2ce",
+                "4512bff38c8cd675"
+            ]
+        ]
+    },
+    {
+        "id": "58836c8d2ead4daa",
+        "type": "mysql",
+        "z": "d91ac3d282c069d0",
+        "d": true,
+        "g": "1a0d550707f8cc4f",
+        "mydb": "45598baf2af77f76",
+        "name": "",
+        "x": 560,
+        "y": 1720,
+        "wires": [
+            [
+                "7f4121ee2de54254"
             ]
         ]
     },
@@ -2798,23 +2765,6 @@
         "wires": []
     },
     {
-        "id": "a2009d0ab2ccef3a",
-        "type": "debug",
-        "z": "87fe75fba6b00d60",
-        "name": "debug 121",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": true,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "payload",
-        "statusType": "auto",
-        "x": 490,
-        "y": 400,
-        "wires": []
-    },
-    {
         "id": "170b8b8963c41720",
         "type": "change",
         "z": "87fe75fba6b00d60",
@@ -3018,38 +2968,6 @@
         "x": 1210,
         "y": 360,
         "wires": []
-    },
-    {
-        "id": "be4fa11e3767c765",
-        "type": "nmea",
-        "z": "87fe75fba6b00d60",
-        "name": "",
-        "property": "payload",
-        "outputProperty": "payload",
-        "x": 570,
-        "y": 540,
-        "wires": [
-            [
-                "2e2a96912f9d7f28",
-                "9f8c640d28c2dbbc",
-                "e2e8f2bc2a0fa59e"
-            ]
-        ]
-    },
-    {
-        "id": "2d7923c474abe8c7",
-        "type": "serial in",
-        "z": "87fe75fba6b00d60",
-        "name": "",
-        "serial": "eadfda525a15b034",
-        "x": 290,
-        "y": 440,
-        "wires": [
-            [
-                "a2009d0ab2ccef3a",
-                "be4fa11e3767c765"
-            ]
-        ]
     },
     {
         "id": "0fa85570732327d9",
@@ -3558,27 +3476,6 @@
         ]
     },
     {
-        "id": "c8180879340f9797",
-        "type": "usb-watch",
-        "z": "93c938d261dc36e3",
-        "name": "",
-        "initialScan": false,
-        "x": 260,
-        "y": 360,
-        "wires": [
-            [
-                "f0909c5883cf2bb5",
-                "6cae6ebd51676aa2",
-                "b896e77a5281950e",
-                "267bd568987c89b8"
-            ],
-            [
-                "411b82cd9be62670",
-                "42e2da368acfdb16"
-            ]
-        ]
-    },
-    {
         "id": "267bd568987c89b8",
         "type": "exec",
         "z": "93c938d261dc36e3",
@@ -3752,6 +3649,27 @@
         ]
     },
     {
+        "id": "c8180879340f9797",
+        "type": "usb-watch",
+        "z": "93c938d261dc36e3",
+        "name": "",
+        "initialScan": false,
+        "x": 260,
+        "y": 360,
+        "wires": [
+            [
+                "f0909c5883cf2bb5",
+                "6cae6ebd51676aa2",
+                "b896e77a5281950e",
+                "267bd568987c89b8"
+            ],
+            [
+                "411b82cd9be62670",
+                "42e2da368acfdb16"
+            ]
+        ]
+    },
+    {
         "id": "dbaf8b3efeaabf37",
         "type": "change",
         "z": "ac1b7f858f654d07",
@@ -3771,7 +3689,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 620,
+        "x": 760,
         "y": 140,
         "wires": [
             [
@@ -3790,18 +3708,20 @@
         "propertyType": "msg",
         "rules": [
             {
-                "t": "gt",
-                "v": "0",
+                "t": "neq",
+                "v": "",
                 "vt": "str"
             },
             {
-                "t": "false"
+                "t": "eq",
+                "v": "",
+                "vt": "str"
             }
         ],
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 390,
+        "x": 530,
         "y": 180,
         "wires": [
             [
@@ -3832,7 +3752,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 630,
+        "x": 770,
         "y": 220,
         "wires": [
             [
@@ -3855,7 +3775,7 @@
         "targetType": "msg",
         "statusVal": "payload",
         "statusType": "auto",
-        "x": 1010,
+        "x": 1150,
         "y": 120,
         "wires": []
     },
@@ -3873,7 +3793,7 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 980,
+        "x": 1120,
         "y": 240,
         "wires": []
     },
@@ -3897,43 +3817,11 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 600,
-        "y": 400,
+        "x": 760,
+        "y": 420,
         "wires": [
             [
                 "594f458e05d10cbd"
-            ]
-        ]
-    },
-    {
-        "id": "a25ce97d8a1e53e6",
-        "type": "switch",
-        "z": "ac1b7f858f654d07",
-        "g": "b7f9bad1da3f666b",
-        "name": "",
-        "property": "payload",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "gte",
-                "v": "0",
-                "vt": "str"
-            },
-            {
-                "t": "false"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 2,
-        "x": 370,
-        "y": 440,
-        "wires": [
-            [
-                "f884311d2c1d9673"
-            ],
-            [
-                "b64c3a8d66676f32"
             ]
         ]
     },
@@ -3957,8 +3845,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 600,
-        "y": 480,
+        "x": 760,
+        "y": 500,
         "wires": [
             [
                 "0108dea861a38364"
@@ -3979,8 +3867,8 @@
         "targetType": "msg",
         "statusVal": "payload",
         "statusType": "auto",
-        "x": 980,
-        "y": 400,
+        "x": 1140,
+        "y": 380,
         "wires": []
     },
     {
@@ -3997,8 +3885,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 960,
-        "y": 480,
+        "x": 1120,
+        "y": 500,
         "wires": []
     },
     {
@@ -4062,8 +3950,8 @@
         "g": "b7f9bad1da3f666b",
         "name": "falta corregir la IP maestra del VPN",
         "info": "",
-        "x": 220,
-        "y": 500,
+        "x": 380,
+        "y": 520,
         "wires": []
     },
     {
@@ -4086,7 +3974,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1060,
+        "x": 1200,
         "y": 180,
         "wires": [
             []
@@ -4112,7 +4000,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1060,
+        "x": 1200,
         "y": 280,
         "wires": [
             []
@@ -4204,7 +4092,7 @@
         "id": "5611ce40d44b863a",
         "type": "exec",
         "z": "ac1b7f858f654d07",
-        "command": "echo -n $(df -h --total | grep /dev/root | awk '{print$2}')",
+        "command": "echo -n $(df -h --total | grep /media/mmcblk0p1 | awk '{print$2}')",
         "addpay": "",
         "append": "",
         "useSpawn": "false",
@@ -4212,7 +4100,7 @@
         "winHide": false,
         "oldrc": false,
         "name": "",
-        "x": 480,
+        "x": 510,
         "y": 720,
         "wires": [
             [
@@ -4226,7 +4114,7 @@
         "id": "cc44bd7818012c3e",
         "type": "exec",
         "z": "ac1b7f858f654d07",
-        "command": "echo -n $(df -h --total | grep /dev/root | awk '{print$3}')",
+        "command": "echo -n $(df -h --total | grep /media/mmcblk0p1 | awk '{print$3}')",
         "addpay": "",
         "append": "",
         "useSpawn": "false",
@@ -4234,7 +4122,7 @@
         "winHide": false,
         "oldrc": false,
         "name": "",
-        "x": 480,
+        "x": 510,
         "y": 780,
         "wires": [
             [
@@ -4248,7 +4136,7 @@
         "id": "859dde0a440deb3d",
         "type": "exec",
         "z": "ac1b7f858f654d07",
-        "command": "echo -n $(df -h --total | grep /dev/root | awk '{print$4}')",
+        "command": "echo -n $(df -h --total | grep /media/mmcblk0p1 | awk '{print$4}')",
         "addpay": "",
         "append": "",
         "useSpawn": "false",
@@ -4256,7 +4144,7 @@
         "winHide": false,
         "oldrc": false,
         "name": "",
-        "x": 480,
+        "x": 510,
         "y": 840,
         "wires": [
             [
@@ -4285,7 +4173,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 970,
+        "x": 1010,
         "y": 720,
         "wires": [
             []
@@ -4310,7 +4198,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 970,
+        "x": 1010,
         "y": 780,
         "wires": [
             []
@@ -4335,7 +4223,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 960,
+        "x": 1000,
         "y": 840,
         "wires": [
             []
@@ -4345,7 +4233,7 @@
         "id": "da42eb0b5eb1cf98",
         "type": "exec",
         "z": "ac1b7f858f654d07",
-        "command": "echo -n $(df -h --total | grep /dev/root | awk '{print$5}')",
+        "command": "echo -n $(df -h --total | grep /media/mmcblk0p1 | awk '{print$5}')",
         "addpay": "",
         "append": "",
         "useSpawn": "false",
@@ -4353,7 +4241,7 @@
         "winHide": false,
         "oldrc": false,
         "name": "",
-        "x": 480,
+        "x": 510,
         "y": 900,
         "wires": [
             [
@@ -4382,7 +4270,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 990,
+        "x": 1030,
         "y": 900,
         "wires": [
             []
@@ -4439,15 +4327,15 @@
         "id": "daca6e4fef23766a",
         "type": "exec",
         "z": "ac1b7f858f654d07",
-        "command": "echo -n $(vcgencmd measure_temp)",
+        "command": "sudo /home/debian/owasys4x_binaries/TEMPERATURE_OWASYS",
         "addpay": "",
         "append": "",
         "useSpawn": "false",
         "timer": "",
         "winHide": false,
         "oldrc": false,
-        "name": "",
-        "x": 430,
+        "name": "Owasys Temperature",
+        "x": 380,
         "y": 1100,
         "wires": [
             [
@@ -4733,40 +4621,142 @@
         "wires": []
     },
     {
-        "id": "36974351050e81e2",
-        "type": "ping",
+        "id": "25de188a7a085732",
+        "type": "exec",
         "z": "ac1b7f858f654d07",
         "g": "39ddbe85a72ee0b3",
-        "protocol": "Automatic",
-        "mode": "timed",
-        "name": "",
-        "host": "161.132.39.167",
-        "timer": "5",
-        "inputs": 0,
-        "x": 180,
-        "y": 180,
+        "command": "echo -n $(sudo ping -c 1 161.132.39.167 | grep \"time=\" | cut -d'=' -f4 | cut -d' ' -f1)",
+        "addpay": "",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "Acme connection",
+        "x": 370,
+        "y": 200,
         "wires": [
             [
                 "969b2948e1ba5ece"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "48658aa020f8e9fe",
+        "type": "inject",
+        "z": "ac1b7f858f654d07",
+        "g": "39ddbe85a72ee0b3",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "15",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 190,
+        "y": 200,
+        "wires": [
+            [
+                "25de188a7a085732"
             ]
         ]
     },
     {
-        "id": "24694e9174f9ea7c",
-        "type": "ping",
+        "id": "edc108b46726314b",
+        "type": "switch",
         "z": "ac1b7f858f654d07",
         "g": "b7f9bad1da3f666b",
-        "protocol": "Automatic",
-        "mode": "timed",
         "name": "",
-        "host": "192.168.192.79",
-        "timer": "5",
-        "inputs": 0,
-        "x": 160,
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "neq",
+                "v": "",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 530,
         "y": 440,
         "wires": [
             [
-                "a25ce97d8a1e53e6"
+                "f884311d2c1d9673"
+            ],
+            [
+                "b64c3a8d66676f32"
+            ]
+        ]
+    },
+    {
+        "id": "27afe5b90432db76",
+        "type": "exec",
+        "z": "ac1b7f858f654d07",
+        "g": "b7f9bad1da3f666b",
+        "command": "echo -n $(sudo ping -c 1 192.168.192.79 | grep \"time=\" | cut -d'=' -f4 | cut -d' ' -f1)",
+        "addpay": "",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "VPN Laptop Del Piero",
+        "x": 360,
+        "y": 460,
+        "wires": [
+            [
+                "edc108b46726314b"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "6ea80da8b90fdb9f",
+        "type": "inject",
+        "z": "ac1b7f858f654d07",
+        "g": "b7f9bad1da3f666b",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "15",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 170,
+        "y": 460,
+        "wires": [
+            [
+                "27afe5b90432db76"
             ]
         ]
     }
