@@ -43,7 +43,7 @@
         "id": "87fe75fba6b00d60",
         "type": "tab",
         "label": "LOCALIZATION",
-        "disabled": false,
+        "disabled": true,
         "info": "",
         "env": []
     },
@@ -54,6 +54,97 @@
         "disabled": false,
         "info": "",
         "env": []
+    },
+    {
+        "id": "b1a454d0a1b772ee",
+        "type": "tab",
+        "label": "IOLINK",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "65ae0cadc7781aa1",
+        "type": "subflow",
+        "name": "IO-Link Master",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 340,
+                "y": 300,
+                "wires": [
+                    {
+                        "id": "b7dbe9ea01bb0817"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 880,
+                "y": 840,
+                "wires": [
+                    {
+                        "id": "97d619e2924074bc",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [
+            {
+                "name": "IP_DIRECTION",
+                "type": "str",
+                "value": "192.168.82.75"
+            }
+        ],
+        "meta": {},
+        "color": "#DDAA99"
+    },
+    {
+        "id": "b58216f533ec2669",
+        "type": "subflow",
+        "name": "IO-Link Port",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 80,
+                "y": 260,
+                "wires": [
+                    {
+                        "id": "452ed66ddb75899d"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 1260,
+                "y": 400,
+                "wires": [
+                    {
+                        "id": "49b17023c368a073",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [
+            {
+                "name": "IP_DIRECTION",
+                "type": "str",
+                "value": "192.168.82.75"
+            },
+            {
+                "name": "PORT_NUMBER",
+                "type": "str",
+                "value": "1"
+            }
+        ],
+        "meta": {},
+        "color": "#DDAA99"
     },
     {
         "id": "3e6cdd9658d4b98d",
@@ -362,6 +453,731 @@
         "charset": "UTF8"
     },
     {
+        "id": "b7dbe9ea01bb0817",
+        "type": "subflow:b58216f533ec2669",
+        "z": "65ae0cadc7781aa1",
+        "name": "Port 1",
+        "env": [
+            {
+                "name": "IP_DIRECTION",
+                "value": "${IP_DIRECTION}",
+                "type": "env"
+            }
+        ],
+        "x": 510,
+        "y": 300,
+        "wires": [
+            [
+                "bbdd920d422725ca"
+            ]
+        ]
+    },
+    {
+        "id": "d6f1d1c55b08f6e9",
+        "type": "subflow:b58216f533ec2669",
+        "z": "65ae0cadc7781aa1",
+        "name": "Port 2",
+        "env": [
+            {
+                "name": "IP_DIRECTION",
+                "value": "${IP_DIRECTION}",
+                "type": "env"
+            },
+            {
+                "name": "PORT_NUMBER",
+                "value": "2",
+                "type": "str"
+            }
+        ],
+        "x": 870,
+        "y": 300,
+        "wires": [
+            [
+                "2e21a8b7250f9007"
+            ]
+        ]
+    },
+    {
+        "id": "22def6679004d1be",
+        "type": "subflow:b58216f533ec2669",
+        "z": "65ae0cadc7781aa1",
+        "name": "Port 3",
+        "env": [
+            {
+                "name": "IP_DIRECTION",
+                "value": "${IP_DIRECTION}",
+                "type": "env"
+            },
+            {
+                "name": "PORT_NUMBER",
+                "value": "3",
+                "type": "str"
+            }
+        ],
+        "x": 510,
+        "y": 420,
+        "wires": [
+            [
+                "0808e08e9784dc99"
+            ]
+        ]
+    },
+    {
+        "id": "e51d5d91b30f3f09",
+        "type": "subflow:b58216f533ec2669",
+        "z": "65ae0cadc7781aa1",
+        "name": "Port 4",
+        "env": [
+            {
+                "name": "IP_DIRECTION",
+                "value": "${IP_DIRECTION}",
+                "type": "env"
+            },
+            {
+                "name": "PORT_NUMBER",
+                "value": "4",
+                "type": "str"
+            }
+        ],
+        "x": 870,
+        "y": 420,
+        "wires": [
+            [
+                "89b8219cc1b2d2c2"
+            ]
+        ]
+    },
+    {
+        "id": "275293285069448c",
+        "type": "subflow:b58216f533ec2669",
+        "z": "65ae0cadc7781aa1",
+        "name": "Port 5",
+        "env": [
+            {
+                "name": "IP_DIRECTION",
+                "value": "${IP_DIRECTION}",
+                "type": "env"
+            },
+            {
+                "name": "PORT_NUMBER",
+                "value": "5",
+                "type": "str"
+            }
+        ],
+        "x": 510,
+        "y": 540,
+        "wires": [
+            [
+                "9ad5ad4e84ccb7f9"
+            ]
+        ]
+    },
+    {
+        "id": "22d249c0460db418",
+        "type": "subflow:b58216f533ec2669",
+        "z": "65ae0cadc7781aa1",
+        "name": "Port 6",
+        "env": [
+            {
+                "name": "IP_DIRECTION",
+                "value": "${IP_DIRECTION}",
+                "type": "env"
+            },
+            {
+                "name": "PORT_NUMBER",
+                "value": "6",
+                "type": "str"
+            }
+        ],
+        "x": 870,
+        "y": 540,
+        "wires": [
+            [
+                "d49cfa8ffbe0806b"
+            ]
+        ]
+    },
+    {
+        "id": "ee124c92fbefb6c0",
+        "type": "subflow:b58216f533ec2669",
+        "z": "65ae0cadc7781aa1",
+        "name": "Port 7",
+        "env": [
+            {
+                "name": "IP_DIRECTION",
+                "value": "${IP_DIRECTION}",
+                "type": "env"
+            },
+            {
+                "name": "PORT_NUMBER",
+                "value": "7",
+                "type": "str"
+            }
+        ],
+        "x": 510,
+        "y": 660,
+        "wires": [
+            [
+                "c973c79219ee6bd6"
+            ]
+        ]
+    },
+    {
+        "id": "32a36303ccdbba10",
+        "type": "subflow:b58216f533ec2669",
+        "z": "65ae0cadc7781aa1",
+        "name": "Port 8",
+        "env": [
+            {
+                "name": "IP_DIRECTION",
+                "value": "${IP_DIRECTION}",
+                "type": "env"
+            },
+            {
+                "name": "PORT_NUMBER",
+                "value": "8",
+                "type": "str"
+            }
+        ],
+        "x": 870,
+        "y": 660,
+        "wires": [
+            [
+                "f02a48429bcecb63"
+            ]
+        ]
+    },
+    {
+        "id": "bbdd920d422725ca",
+        "type": "change",
+        "z": "65ae0cadc7781aa1",
+        "name": "Port1 set",
+        "rules": [
+            {
+                "t": "set",
+                "p": "ports.port1",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 640,
+        "y": 300,
+        "wires": [
+            [
+                "d6f1d1c55b08f6e9"
+            ]
+        ]
+    },
+    {
+        "id": "2e21a8b7250f9007",
+        "type": "change",
+        "z": "65ae0cadc7781aa1",
+        "name": "Port2 set",
+        "rules": [
+            {
+                "t": "set",
+                "p": "ports.port2",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1000,
+        "y": 300,
+        "wires": [
+            [
+                "22def6679004d1be"
+            ]
+        ]
+    },
+    {
+        "id": "0808e08e9784dc99",
+        "type": "change",
+        "z": "65ae0cadc7781aa1",
+        "name": "Port3 set",
+        "rules": [
+            {
+                "t": "set",
+                "p": "ports.port3",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 640,
+        "y": 420,
+        "wires": [
+            [
+                "e51d5d91b30f3f09"
+            ]
+        ]
+    },
+    {
+        "id": "89b8219cc1b2d2c2",
+        "type": "change",
+        "z": "65ae0cadc7781aa1",
+        "name": "Port4 set",
+        "rules": [
+            {
+                "t": "set",
+                "p": "ports.port4",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1000,
+        "y": 420,
+        "wires": [
+            [
+                "275293285069448c"
+            ]
+        ]
+    },
+    {
+        "id": "9ad5ad4e84ccb7f9",
+        "type": "change",
+        "z": "65ae0cadc7781aa1",
+        "name": "Port5 set",
+        "rules": [
+            {
+                "t": "set",
+                "p": "ports.port5",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 640,
+        "y": 540,
+        "wires": [
+            [
+                "22d249c0460db418"
+            ]
+        ]
+    },
+    {
+        "id": "d49cfa8ffbe0806b",
+        "type": "change",
+        "z": "65ae0cadc7781aa1",
+        "name": "Port6 set",
+        "rules": [
+            {
+                "t": "set",
+                "p": "ports.port6",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1000,
+        "y": 540,
+        "wires": [
+            [
+                "ee124c92fbefb6c0"
+            ]
+        ]
+    },
+    {
+        "id": "c973c79219ee6bd6",
+        "type": "change",
+        "z": "65ae0cadc7781aa1",
+        "name": "Port7 set",
+        "rules": [
+            {
+                "t": "set",
+                "p": "ports.port7",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 640,
+        "y": 660,
+        "wires": [
+            [
+                "32a36303ccdbba10"
+            ]
+        ]
+    },
+    {
+        "id": "f02a48429bcecb63",
+        "type": "change",
+        "z": "65ae0cadc7781aa1",
+        "name": "Port8 set",
+        "rules": [
+            {
+                "t": "set",
+                "p": "ports.port8",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1000,
+        "y": 660,
+        "wires": [
+            [
+                "97d619e2924074bc"
+            ]
+        ]
+    },
+    {
+        "id": "97d619e2924074bc",
+        "type": "change",
+        "z": "65ae0cadc7781aa1",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "ports",
+                "tot": "global"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 720,
+        "y": 840,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "38cceacb2457a466",
+        "type": "function",
+        "z": "b58216f533ec2669",
+        "name": "GET PORT DEVICENAME",
+        "func": "const PORT_NUMBER = flow.get(\"portNumber\")\n\nmsg.payload = {\"code\": \"request\", \"cid\": 4711, \n    \"adr\": `/iolinkmaster/port[${PORT_NUMBER}]/iolinkdevice/iolreadacyclic`,\n    \"data\":{\"index\":18,\"subindex\":0}}\n    \nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 320,
+        "wires": [
+            [
+                "0dea33bffd95c735"
+            ]
+        ]
+    },
+    {
+        "id": "0dea33bffd95c735",
+        "type": "http request",
+        "z": "b58216f533ec2669",
+        "name": "",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "${IP_DIRECTION}",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 610,
+        "y": 320,
+        "wires": [
+            [
+                "1b49ae0d2e06b5cb"
+            ]
+        ]
+    },
+    {
+        "id": "1b49ae0d2e06b5cb",
+        "type": "change",
+        "z": "b58216f533ec2669",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "port.devName",
+                "pt": "flow",
+                "to": "payload.data.value",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 820,
+        "y": 320,
+        "wires": [
+            [
+                "cc2251e0d2f11d40"
+            ]
+        ]
+    },
+    {
+        "id": "452ed66ddb75899d",
+        "type": "function",
+        "z": "b58216f533ec2669",
+        "name": "GET PORT SERIAL",
+        "func": "const PORT_NUMBER = flow.get(\"portNumber\")\n\n\nmsg.payload = {\"code\": \"request\", \"cid\": 4711, \n    \"adr\": `/iolinkmaster/port[${PORT_NUMBER}]/iolinkdevice/iolreadacyclic`,\n    \"data\":{\"index\":21,\"subindex\":0}}\n    \nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 320,
+        "y": 220,
+        "wires": [
+            [
+                "e6de3084ead554fe"
+            ]
+        ]
+    },
+    {
+        "id": "e6de3084ead554fe",
+        "type": "http request",
+        "z": "b58216f533ec2669",
+        "name": "",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "${IP_DIRECTION}",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 590,
+        "y": 220,
+        "wires": [
+            [
+                "0662c27fd0ad6a43"
+            ]
+        ]
+    },
+    {
+        "id": "0662c27fd0ad6a43",
+        "type": "change",
+        "z": "b58216f533ec2669",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "port.devSerial",
+                "pt": "flow",
+                "to": "payload.data.value",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 800,
+        "y": 220,
+        "wires": [
+            [
+                "38cceacb2457a466"
+            ]
+        ]
+    },
+    {
+        "id": "cc2251e0d2f11d40",
+        "type": "function",
+        "z": "b58216f533ec2669",
+        "name": "GET PORT STATUS",
+        "func": "const PORT_NUMBER = flow.get(\"portNumber\")\n\nmsg.payload = {\"code\": \"request\", \"cid\": 4711, \n    \"adr\": `/iolinkmaster/port[${PORT_NUMBER}]/iolinkdevice/iolreadacyclic`,\n    \"data\":{\"index\":36,\"subindex\":0}}\n    \nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 400,
+        "wires": [
+            [
+                "6c0d70f598c3fe09"
+            ]
+        ]
+    },
+    {
+        "id": "6c0d70f598c3fe09",
+        "type": "http request",
+        "z": "b58216f533ec2669",
+        "name": "",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "${IP_DIRECTION}",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 610,
+        "y": 400,
+        "wires": [
+            [
+                "14eda0f52753742c"
+            ]
+        ]
+    },
+    {
+        "id": "14eda0f52753742c",
+        "type": "change",
+        "z": "b58216f533ec2669",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "port.devStatus",
+                "pt": "flow",
+                "to": "payload.data.value",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 820,
+        "y": 400,
+        "wires": [
+            [
+                "49b17023c368a073"
+            ]
+        ]
+    },
+    {
+        "id": "504763a40be436e3",
+        "type": "change",
+        "z": "b58216f533ec2669",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "port",
+                "pt": "flow",
+                "to": "{\"devStatus\":\"\",\"devName\":\"\",\"devSerial\":\"\",\"devData\":\"\",\"devUnits\":\"\"}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 690,
+        "y": 60,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "49b17023c368a073",
+        "type": "change",
+        "z": "b58216f533ec2669",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "port",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1100,
+        "y": 400,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "68ab91759facae50",
+        "type": "change",
+        "z": "b58216f533ec2669",
+        "d": true,
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "portNumber",
+                "pt": "flow",
+                "to": "PORT_NUMBER",
+                "tot": "env"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 720,
+        "y": 120,
+        "wires": [
+            []
+        ]
+    },
+    {
         "id": "f6030b020cf22d88",
         "type": "inject",
         "z": "9dcf4eee0723b8d2",
@@ -652,8 +1468,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 420,
-        "y": 560,
+        "x": 400,
+        "y": 600,
         "wires": [
             []
         ]
@@ -679,8 +1495,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 230,
-        "y": 560,
+        "x": 210,
+        "y": 600,
         "wires": [
             [
                 "f6957c60f691242c"
@@ -4947,5 +5763,1647 @@
         "x": 590,
         "y": 380,
         "wires": []
+    },
+    {
+        "id": "804ff7dc62c353aa",
+        "type": "function",
+        "z": "b1a454d0a1b772ee",
+        "d": true,
+        "name": "GET DATA PORT1 (O1D103)",
+        "func": "msg.payload = {\"code\": \"request\", \"cid\": 4711, \n\"adr\": \"/iolinkmaster/port[1]/iolinkdevice/pdin/getdata\"}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 460,
+        "y": 40,
+        "wires": [
+            [
+                "8a82524997574e4b"
+            ]
+        ]
+    },
+    {
+        "id": "5eabf1d5d72941fc",
+        "type": "inject",
+        "z": "b1a454d0a1b772ee",
+        "d": true,
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "0.2",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 110,
+        "y": 140,
+        "wires": [
+            [
+                "804ff7dc62c353aa",
+                "228a2009f4c46402",
+                "28b76086aadec55c",
+                "a9dd51797d912415"
+            ]
+        ]
+    },
+    {
+        "id": "3174b55aadb3f0b6",
+        "type": "http request",
+        "z": "b1a454d0a1b772ee",
+        "d": true,
+        "name": "",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "192.168.82.150",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 770,
+        "y": 160,
+        "wires": [
+            [
+                "9eb203c30aeae1ce"
+            ]
+        ]
+    },
+    {
+        "id": "8199c3e65cd5a479",
+        "type": "http request",
+        "z": "b1a454d0a1b772ee",
+        "d": true,
+        "name": "",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "192.168.82.150",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 770,
+        "y": 100,
+        "wires": [
+            [
+                "22d786de346e05c4"
+            ]
+        ]
+    },
+    {
+        "id": "8a82524997574e4b",
+        "type": "http request",
+        "z": "b1a454d0a1b772ee",
+        "d": true,
+        "name": "",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "192.168.82.150",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 770,
+        "y": 40,
+        "wires": [
+            [
+                "ed4884d1ff5dfb3b"
+            ]
+        ]
+    },
+    {
+        "id": "228a2009f4c46402",
+        "type": "function",
+        "z": "b1a454d0a1b772ee",
+        "d": true,
+        "name": "GET DATA PORT2 (IG6086)",
+        "func": "msg.payload = {\"code\": \"request\", \"cid\": 4711, \n\"adr\": \"/iolinkmaster/port[2]/iolinkdevice/pdin/getdata\"}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 460,
+        "y": 100,
+        "wires": [
+            [
+                "8199c3e65cd5a479"
+            ]
+        ]
+    },
+    {
+        "id": "28b76086aadec55c",
+        "type": "function",
+        "z": "b1a454d0a1b772ee",
+        "d": true,
+        "name": "GET DATA PORT3 (TW2000)",
+        "func": "msg.payload = {\"code\": \"request\", \"cid\": 4711, \n\"adr\": \"/iolinkmaster/port[3]/iolinkdevice/pdin/getdata\"}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 460,
+        "y": 160,
+        "wires": [
+            [
+                "3174b55aadb3f0b6"
+            ]
+        ]
+    },
+    {
+        "id": "a9dd51797d912415",
+        "type": "function",
+        "z": "b1a454d0a1b772ee",
+        "d": true,
+        "name": "GET DATA PORT4 (VVB021)",
+        "func": "msg.payload = {\"code\": \"request\", \"cid\": 4711, \n\"adr\": \"/iolinkmaster/port[4]/iolinkdevice/pdin/getdata\"}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 460,
+        "y": 220,
+        "wires": [
+            [
+                "2aad23334250f04a"
+            ]
+        ]
+    },
+    {
+        "id": "22d786de346e05c4",
+        "type": "change",
+        "z": "b1a454d0a1b772ee",
+        "d": true,
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.data.value",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 960,
+        "y": 100,
+        "wires": [
+            [
+                "0b717de283f6608d"
+            ]
+        ]
+    },
+    {
+        "id": "ed4884d1ff5dfb3b",
+        "type": "change",
+        "z": "b1a454d0a1b772ee",
+        "d": true,
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.data.value",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 960,
+        "y": 40,
+        "wires": [
+            [
+                "5c8b5d9c9ceccadf"
+            ]
+        ]
+    },
+    {
+        "id": "9eb203c30aeae1ce",
+        "type": "change",
+        "z": "b1a454d0a1b772ee",
+        "d": true,
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.data.value",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 960,
+        "y": 160,
+        "wires": [
+            [
+                "7f226d4c25819e01"
+            ]
+        ]
+    },
+    {
+        "id": "2aad23334250f04a",
+        "type": "http request",
+        "z": "b1a454d0a1b772ee",
+        "d": true,
+        "name": "",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "192.168.82.150",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 770,
+        "y": 220,
+        "wires": [
+            [
+                "5a96444469981978"
+            ]
+        ]
+    },
+    {
+        "id": "5a96444469981978",
+        "type": "change",
+        "z": "b1a454d0a1b772ee",
+        "d": true,
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.data.value",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 960,
+        "y": 220,
+        "wires": [
+            [
+                "c56add60c00b9105"
+            ]
+        ]
+    },
+    {
+        "id": "98ac6dd0ce457856",
+        "type": "change",
+        "z": "b1a454d0a1b772ee",
+        "d": true,
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "gateway_data.text5",
+                "pt": "global",
+                "to": "payload.distance",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "gateway_data.led2",
+                "pt": "global",
+                "to": "payload.out1",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "gateway_data.led3",
+                "pt": "global",
+                "to": "payload.out2",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1360,
+        "y": 40,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "897966e7cfacdd76",
+        "type": "change",
+        "z": "b1a454d0a1b772ee",
+        "d": true,
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "gateway_data.led0",
+                "pt": "global",
+                "to": "payload.ssc1",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1400,
+        "y": 100,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f2a9f53c73f3025b",
+        "type": "change",
+        "z": "b1a454d0a1b772ee",
+        "d": true,
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "gateway_data.text0",
+                "pt": "global",
+                "to": "payload.temperature",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1410,
+        "y": 160,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f6e8fb538e9f9e0d",
+        "type": "change",
+        "z": "b1a454d0a1b772ee",
+        "d": true,
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "gateway_data.text01",
+                "pt": "global",
+                "to": "payload.crest",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1410,
+        "y": 280,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c6907881122e6489",
+        "type": "change",
+        "z": "b1a454d0a1b772ee",
+        "d": true,
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "gateway_data.led1",
+                "pt": "global",
+                "to": "payload.out1",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1400,
+        "y": 200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2a30d31b8fdd3475",
+        "type": "change",
+        "z": "b1a454d0a1b772ee",
+        "d": true,
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "gateway_data.text1",
+                "pt": "global",
+                "to": "payload.temperature",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1410,
+        "y": 320,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "047219c8a9b0affe",
+        "type": "change",
+        "z": "b1a454d0a1b772ee",
+        "d": true,
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "gateway_data.text2",
+                "pt": "global",
+                "to": "payload.arms",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1410,
+        "y": 360,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "fffeee0195a42a8d",
+        "type": "change",
+        "z": "b1a454d0a1b772ee",
+        "d": true,
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "gateway_data.text3",
+                "pt": "global",
+                "to": "payload.vrms",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1410,
+        "y": 400,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "443ce4166de66905",
+        "type": "change",
+        "z": "b1a454d0a1b772ee",
+        "d": true,
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "gateway_data.text4",
+                "pt": "global",
+                "to": "payload.apeak",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1410,
+        "y": 440,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "0b717de283f6608d",
+        "type": "buffer-parser",
+        "z": "b1a454d0a1b772ee",
+        "d": true,
+        "name": "IG6086",
+        "data": "payload",
+        "dataType": "msg",
+        "specification": "spec",
+        "specificationType": "ui",
+        "items": [
+            {
+                "type": "int16be",
+                "name": "pdv1",
+                "offset": 0,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "uint8",
+                "name": "scale",
+                "offset": 2,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "uint8",
+                "name": "status",
+                "offset": 3,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": "0xF0"
+            },
+            {
+                "type": "bool",
+                "name": "ssc1",
+                "offset": 3,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "bool",
+                "name": "ssc2",
+                "offset": 3,
+                "length": 1,
+                "offsetbit": 1,
+                "scale": "1",
+                "mask": ""
+            }
+        ],
+        "swap1": "",
+        "swap2": "",
+        "swap3": "",
+        "swap1Type": "swap",
+        "swap2Type": "swap",
+        "swap3Type": "swap",
+        "msgProperty": "payload",
+        "msgPropertyType": "str",
+        "resultType": "keyvalue",
+        "resultTypeType": "return",
+        "multipleResult": false,
+        "fanOutMultipleResult": false,
+        "setTopic": true,
+        "outputs": 1,
+        "x": 1160,
+        "y": 100,
+        "wires": [
+            [
+                "897966e7cfacdd76"
+            ]
+        ]
+    },
+    {
+        "id": "5c8b5d9c9ceccadf",
+        "type": "buffer-parser",
+        "z": "b1a454d0a1b772ee",
+        "d": true,
+        "name": "O1D103",
+        "data": "payload",
+        "dataType": "msg",
+        "specification": "spec",
+        "specificationType": "ui",
+        "items": [
+            {
+                "type": "int16be",
+                "name": "distance",
+                "offset": 0,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "uint8",
+                "name": "reflectivity",
+                "offset": 4,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "uint8",
+                "name": "status",
+                "offset": 7,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": "0xF0"
+            },
+            {
+                "type": "bool",
+                "name": "out1",
+                "offset": 7,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "bool",
+                "name": "out2",
+                "offset": 7,
+                "length": 1,
+                "offsetbit": 1,
+                "scale": "1",
+                "mask": ""
+            }
+        ],
+        "swap1": "",
+        "swap2": "",
+        "swap3": "",
+        "swap1Type": "swap",
+        "swap2Type": "swap",
+        "swap3Type": "swap",
+        "msgProperty": "payload",
+        "msgPropertyType": "str",
+        "resultType": "keyvalue",
+        "resultTypeType": "return",
+        "multipleResult": false,
+        "fanOutMultipleResult": false,
+        "setTopic": true,
+        "outputs": 1,
+        "x": 1160,
+        "y": 40,
+        "wires": [
+            [
+                "98ac6dd0ce457856"
+            ]
+        ]
+    },
+    {
+        "id": "7f226d4c25819e01",
+        "type": "buffer-parser",
+        "z": "b1a454d0a1b772ee",
+        "d": true,
+        "name": "TW2000",
+        "data": "payload",
+        "dataType": "msg",
+        "specification": "spec",
+        "specificationType": "ui",
+        "items": [
+            {
+                "type": "int16be",
+                "name": "temperature",
+                "offset": 0,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "0.1",
+                "mask": ""
+            },
+            {
+                "type": "byte",
+                "name": "scale",
+                "offset": 3,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": "0xF0"
+            },
+            {
+                "type": "uint8",
+                "name": "status",
+                "offset": 3,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": "0xF0"
+            },
+            {
+                "type": "bool",
+                "name": "out1",
+                "offset": 3,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            }
+        ],
+        "swap1": "",
+        "swap2": "",
+        "swap3": "",
+        "swap1Type": "swap",
+        "swap2Type": "swap",
+        "swap3Type": "swap",
+        "msgProperty": "payload",
+        "msgPropertyType": "str",
+        "resultType": "keyvalue",
+        "resultTypeType": "return",
+        "multipleResult": false,
+        "fanOutMultipleResult": false,
+        "setTopic": true,
+        "outputs": 1,
+        "x": 1160,
+        "y": 160,
+        "wires": [
+            [
+                "f2a9f53c73f3025b",
+                "c6907881122e6489"
+            ]
+        ]
+    },
+    {
+        "id": "c56add60c00b9105",
+        "type": "buffer-parser",
+        "z": "b1a454d0a1b772ee",
+        "d": true,
+        "name": "VVB021",
+        "data": "payload",
+        "dataType": "msg",
+        "specification": "spec",
+        "specificationType": "ui",
+        "items": [
+            {
+                "type": "int16be",
+                "name": "vrms",
+                "offset": 0,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "0.0001",
+                "mask": ""
+            },
+            {
+                "type": "uint8",
+                "name": "scale-vrms",
+                "offset": 2,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "int16be",
+                "name": "apeak",
+                "offset": 4,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "0.1",
+                "mask": ""
+            },
+            {
+                "type": "uint8",
+                "name": "scale-apeak",
+                "offset": 6,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "int16be",
+                "name": "arms",
+                "offset": 8,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "0.1",
+                "mask": ""
+            },
+            {
+                "type": "uint8",
+                "name": "scale-arms",
+                "offset": 10,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "int16be",
+                "name": "temperature",
+                "offset": 12,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "0.1",
+                "mask": ""
+            },
+            {
+                "type": "uint8",
+                "name": "scale-temperature",
+                "offset": 14,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "uint16be",
+                "name": "crest",
+                "offset": 16,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "0.1",
+                "mask": ""
+            },
+            {
+                "type": "uint8",
+                "name": "scale-crest",
+                "offset": 18,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "uint8",
+                "name": "status",
+                "offset": 19,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": "0xF0"
+            },
+            {
+                "type": "bool",
+                "name": "out1",
+                "offset": 19,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "bool",
+                "name": "out2",
+                "offset": 19,
+                "length": 1,
+                "offsetbit": 1,
+                "scale": "1",
+                "mask": ""
+            }
+        ],
+        "swap1": "",
+        "swap2": "",
+        "swap3": "",
+        "swap1Type": "swap",
+        "swap2Type": "swap",
+        "swap3Type": "swap",
+        "msgProperty": "payload",
+        "msgPropertyType": "str",
+        "resultType": "keyvalue",
+        "resultTypeType": "return",
+        "multipleResult": false,
+        "fanOutMultipleResult": false,
+        "setTopic": true,
+        "outputs": 1,
+        "x": 1160,
+        "y": 280,
+        "wires": [
+            [
+                "f6e8fb538e9f9e0d",
+                "2a30d31b8fdd3475",
+                "443ce4166de66905",
+                "fffeee0195a42a8d",
+                "047219c8a9b0affe"
+            ]
+        ]
+    },
+    {
+        "id": "81423a27917325dc",
+        "type": "function",
+        "z": "b1a454d0a1b772ee",
+        "name": "GET DATA PORT1 (O1D103)",
+        "func": "msg.payload = {\"code\": \"request\", \"cid\": 4711, \n\"adr\": \"/iolinkmaster/port[1]/iolinkdevice/pdin/getdata\"}\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 460,
+        "y": 620,
+        "wires": [
+            [
+                "d4a27a5a3231ee20"
+            ]
+        ]
+    },
+    {
+        "id": "d4a27a5a3231ee20",
+        "type": "http request",
+        "z": "b1a454d0a1b772ee",
+        "name": "",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "192.168.82.150",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 770,
+        "y": 620,
+        "wires": [
+            [
+                "d59e3e4e2a367214"
+            ]
+        ]
+    },
+    {
+        "id": "d59e3e4e2a367214",
+        "type": "change",
+        "z": "b1a454d0a1b772ee",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.data.value",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 960,
+        "y": 620,
+        "wires": [
+            [
+                "a9fb501e87a49a0c"
+            ]
+        ]
+    },
+    {
+        "id": "a9fb501e87a49a0c",
+        "type": "buffer-parser",
+        "z": "b1a454d0a1b772ee",
+        "name": "O1D103",
+        "data": "payload",
+        "dataType": "msg",
+        "specification": "spec",
+        "specificationType": "ui",
+        "items": [
+            {
+                "type": "int16be",
+                "name": "distance",
+                "offset": 0,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "uint8",
+                "name": "reflectivity",
+                "offset": 4,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "uint8",
+                "name": "status",
+                "offset": 7,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": "0xF0"
+            },
+            {
+                "type": "bool",
+                "name": "out1",
+                "offset": 7,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "bool",
+                "name": "out2",
+                "offset": 7,
+                "length": 1,
+                "offsetbit": 1,
+                "scale": "1",
+                "mask": ""
+            }
+        ],
+        "swap1": "",
+        "swap2": "",
+        "swap3": "",
+        "swap1Type": "swap",
+        "swap2Type": "swap",
+        "swap3Type": "swap",
+        "msgProperty": "payload",
+        "msgPropertyType": "str",
+        "resultType": "keyvalue",
+        "resultTypeType": "return",
+        "multipleResult": false,
+        "fanOutMultipleResult": false,
+        "setTopic": true,
+        "outputs": 1,
+        "x": 1160,
+        "y": 620,
+        "wires": [
+            [
+                "5e92cc7d0d3747d5"
+            ]
+        ]
+    },
+    {
+        "id": "5e92cc7d0d3747d5",
+        "type": "change",
+        "z": "b1a454d0a1b772ee",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "gateway_data.text5",
+                "pt": "global",
+                "to": "payload.distance",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "gateway_data.led2",
+                "pt": "global",
+                "to": "payload.out1",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "gateway_data.led3",
+                "pt": "global",
+                "to": "payload.out2",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1360,
+        "y": 620,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b19f7af81dea6fa0",
+        "type": "inject",
+        "z": "b1a454d0a1b772ee",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 200,
+        "y": 620,
+        "wires": [
+            [
+                "81423a27917325dc"
+            ]
+        ]
+    },
+    {
+        "id": "ae064b04993eac11",
+        "type": "function",
+        "z": "b1a454d0a1b772ee",
+        "name": "GET DATA PORT1",
+        "func": "msg.payload = {\"code\": \"request\", \"cid\": 4711, \n\"adr\": \"/iolinkmaster/port[1]/iolinkdevice/productname\"}\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 430,
+        "y": 720,
+        "wires": [
+            [
+                "92571cb46e824a59"
+            ]
+        ]
+    },
+    {
+        "id": "92571cb46e824a59",
+        "type": "http request",
+        "z": "b1a454d0a1b772ee",
+        "name": "",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "192.168.82.75",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 710,
+        "y": 720,
+        "wires": [
+            [
+                "9996d7c35fa7f490"
+            ]
+        ]
+    },
+    {
+        "id": "e59466fd850864fe",
+        "type": "inject",
+        "z": "b1a454d0a1b772ee",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 220,
+        "y": 720,
+        "wires": [
+            [
+                "ae064b04993eac11"
+            ]
+        ]
+    },
+    {
+        "id": "9996d7c35fa7f490",
+        "type": "debug",
+        "z": "b1a454d0a1b772ee",
+        "name": "debug 131",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 930,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "169c2334bfa648ca",
+        "type": "function",
+        "z": "b1a454d0a1b772ee",
+        "name": "GET PORT1 SERIAL",
+        "func": "msg.payload = {\"code\": \"request\", \"cid\": 4711, \n    \"adr\": \"/iolinkmaster/port[5]/iolinkdevice/iolreadacyclic\",\n    \"data\":{\"index\":21,\"subindex\":0}}\n    \nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 440,
+        "y": 840,
+        "wires": [
+            [
+                "029d363575ee3e74"
+            ]
+        ]
+    },
+    {
+        "id": "029d363575ee3e74",
+        "type": "http request",
+        "z": "b1a454d0a1b772ee",
+        "name": "",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "192.168.82.75",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 710,
+        "y": 840,
+        "wires": [
+            [
+                "d5d8ed95c548df41"
+            ]
+        ]
+    },
+    {
+        "id": "f2ca7203167c1a89",
+        "type": "inject",
+        "z": "b1a454d0a1b772ee",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 220,
+        "y": 840,
+        "wires": [
+            [
+                "169c2334bfa648ca"
+            ]
+        ]
+    },
+    {
+        "id": "d5d8ed95c548df41",
+        "type": "debug",
+        "z": "b1a454d0a1b772ee",
+        "name": "debug 132",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 930,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "19ca914a5831d06e",
+        "type": "function",
+        "z": "b1a454d0a1b772ee",
+        "name": "GET PORT1 DEVICENAME",
+        "func": "msg.payload = {\"code\": \"request\", \"cid\": 4711, \n    \"adr\": \"/iolinkmaster/port[1]/iolinkdevice/iolreadacyclic\",\n    \"data\":{\"index\":18,\"subindex\":0}}\n    \nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 460,
+        "y": 900,
+        "wires": [
+            [
+                "dc655e0ec0b0b9c5"
+            ]
+        ]
+    },
+    {
+        "id": "dc655e0ec0b0b9c5",
+        "type": "http request",
+        "z": "b1a454d0a1b772ee",
+        "name": "",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "192.168.82.75",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 710,
+        "y": 900,
+        "wires": [
+            [
+                "6bd7bdecac9f5f6e"
+            ]
+        ]
+    },
+    {
+        "id": "275017d357c9473c",
+        "type": "inject",
+        "z": "b1a454d0a1b772ee",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 220,
+        "y": 900,
+        "wires": [
+            [
+                "19ca914a5831d06e"
+            ]
+        ]
+    },
+    {
+        "id": "6bd7bdecac9f5f6e",
+        "type": "debug",
+        "z": "b1a454d0a1b772ee",
+        "name": "debug 133",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 930,
+        "y": 900,
+        "wires": []
+    },
+    {
+        "id": "d1e0699f3e3c2b0d",
+        "type": "subflow:65ae0cadc7781aa1",
+        "z": "b1a454d0a1b772ee",
+        "name": "",
+        "x": 540,
+        "y": 1060,
+        "wires": [
+            [
+                "93bcd886dcf1f3fe"
+            ]
+        ]
+    },
+    {
+        "id": "6f9354ac4c4be6c8",
+        "type": "inject",
+        "z": "b1a454d0a1b772ee",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 340,
+        "y": 1060,
+        "wires": [
+            [
+                "d1e0699f3e3c2b0d"
+            ]
+        ]
+    },
+    {
+        "id": "93bcd886dcf1f3fe",
+        "type": "debug",
+        "z": "b1a454d0a1b772ee",
+        "name": "debug 134",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 750,
+        "y": 1060,
+        "wires": []
+    },
+    {
+        "id": "07f967a463daa8ef",
+        "type": "subflow:b58216f533ec2669",
+        "z": "b1a454d0a1b772ee",
+        "name": "",
+        "x": 550,
+        "y": 1160,
+        "wires": [
+            [
+                "758fa5b87c2b119f"
+            ]
+        ]
+    },
+    {
+        "id": "7df9f9e16242f96b",
+        "type": "inject",
+        "z": "b1a454d0a1b772ee",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 380,
+        "y": 1160,
+        "wires": [
+            [
+                "07f967a463daa8ef"
+            ]
+        ]
+    },
+    {
+        "id": "758fa5b87c2b119f",
+        "type": "debug",
+        "z": "b1a454d0a1b772ee",
+        "name": "debug 135",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 730,
+        "y": 1160,
+        "wires": []
+    },
+    {
+        "id": "02631309be99b218",
+        "type": "function",
+        "z": "b1a454d0a1b772ee",
+        "name": "GET PORT STATUS",
+        "func": "const PORT_NUMBER = flow.get(\"portNumber\")\n\nmsg.payload = {\"code\": \"request\", \"cid\": 4711, \n    \"adr\": `/iolinkmaster/port[1]/iolinkdevice/iolreadacyclic`,\n    \"data\":{\"index\":36,\"subindex\":0}}\n    \nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 960,
+        "wires": [
+            [
+                "a37f547c20ca3f2c"
+            ]
+        ]
+    },
+    {
+        "id": "84ecc2de32fc6dfa",
+        "type": "debug",
+        "z": "b1a454d0a1b772ee",
+        "name": "debug 136",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 890,
+        "y": 960,
+        "wires": []
+    },
+    {
+        "id": "38bdc66f252b1ff1",
+        "type": "inject",
+        "z": "b1a454d0a1b772ee",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 200,
+        "y": 960,
+        "wires": [
+            [
+                "02631309be99b218"
+            ]
+        ]
+    },
+    {
+        "id": "a37f547c20ca3f2c",
+        "type": "http request",
+        "z": "b1a454d0a1b772ee",
+        "name": "",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "192.168.82.75",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 690,
+        "y": 960,
+        "wires": [
+            [
+                "84ecc2de32fc6dfa"
+            ]
+        ]
     }
 ]
